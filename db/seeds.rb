@@ -20,27 +20,24 @@ u11 = User.create(username: 'user11', email: 'sta@mail.com', password_digest: '1
 
 #CR
 
-c1 = Community.create(title: 'Project safe', description: 'Empowering survivors of violence to find safety, support, hope and connection. Offering free lock changes, must be referred by a social worker.', contact: '347-328-8069', category: 'Home Services', user_id: u1.id)
-
-c2 = Community.create(title: 'Project safe', description: 'Empowering survivors of violence to find safety, support, hope and connection. Offering free lock changes, must be referred by a social worker.', contact: '347-328-8069', category: 'Home Services', user_id: u2.id)
-
-c3 = Community.create(title: 'Project safe', description: 'Empowering survivors of violence to find safety, support, hope and connection. Offering free lock changes, must be referred by a social worker.', contact: '347-328-8069', category: 'Home Services', user_id: u3.id)
-
-c4 = Community.create(title: 'Project safe', description: 'Empowering survivors of violence to find safety, support, hope and connection. Offering free lock changes, must be referred by a social worker.', contact: '347-328-8069', category: 'Home Services', user_id: u4.id)
-
+c1 = Community.create(title: 'Project Safe', description: 'Empowering survivors of violence to find safety, support, hope and connection. Offering free lock changes, must be referred by a social worker.', contact: '347-328-8069', category: 'Home Services', user_id: u1.id)
+c2 = Community.create(title: 'Safe Horizons', description: 'A nationwide network dedicated to providing services for survivors of sexual assault. Offering emergency housing, must be referred by a social worker.', contact: '347-328-8069', category: 'Emergency Housing', user_id: u2.id)
+c3 = Community.create(title: 'Lyft', description: 'Transportation service. Will provide free rides to local emergency room for survivors of assualt. Please email us for the promo code', contact: 'assist@lyft.com', category: 'Transportation Services', user_id: u3.id)
+c4 = Community.create(title: 'Lucy Danila', description: 'I am a stay at home mom to two wonderful children. I am fluent in English and Spanish. Please contact me if you require a translator for managing this difficult time. Can accompany you to the hospital, help you with paperwork related to this, etc', contact: '555-555-5555', category: 'Translation Services', user_id: u4.id)
+c5 = Community.create(title: 'Acacia Bokwa', description: 'I am a licensed therapist who works predominantly with the LGBQT+ community, and can offer up to 3 free sessions of counseling to help survivors of sexual violence. Please send me an email and stay strong!', contact: 'acba@rmail.com', category: 'Mental Health', user_id: u1.id)
 #journal entries
-j1 = Journal.create(title: "1", entry: "today sucks", user_id: u1.id)
-j2 = Journal.create(title: "1", entry: "today sucks less", user_id: u1.id)
-j3 = Journal.create(title: "1" , entry: "today sucks more", user_id: u1.id)
-j4 = Journal.create(title: "1", entry: "today sucks", user_id: u1.id)
-j5 = Journal.create(title: "1", entry: "today sucks", user_id: u2.id)
-j6 = Journal.create(title: "1", entry: "today sucks more", user_id: u2.id)
-j7 = Journal.create(title: "1", entry: "today sucks less", user_id: u2.id)
-j8 = Journal.create(title: "1", entry: "today sucks", user_id: u2.id)
-j9 = Journal.create(title: "1", entry: "today sucks", user_id: u3.id)
-j10 = Journal.create(title: "1", entry: "today sucks", user_id: u3.id)
-j11 = Journal.create(title: "1", entry: "today sucks", user_id: u3.id)
-j12 = Journal.create(title: "1", entry: "today sucks", user_id: u3.id)
+j1 = Journal.create(title: "Therapy", entry: "Went to therapy....", user_id: u1.id)
+j2 = Journal.create(title: "Legal", entry: "Spoke to a lawyer today...", user_id: u1.id)
+j3 = Journal.create(title: "Hospital" , entry: "Went to ER today...", user_id: u1.id)
+j4 = Journal.create(title: "Police Report", entry: "Case #8948934984...", user_id: u1.id)
+j5 = Journal.create(title: "Therapy", entry: "Saw a therapist...", user_id: u2.id)
+j6 = Journal.create(title: "Legal", entry: "Saw a lawyer...", user_id: u2.id)
+j7 = Journal.create(title: "Hospital", entry: "Saw a doctor...", user_id: u2.id)
+j8 = Journal.create(title: "Police", entry: "Saw a detective...", user_id: u2.id)
+j9 = Journal.create(title: "Therapy", entry: "I'm not sure about this...", user_id: u3.id)
+j10 = Journal.create(title: "Legal", entry: "I need to speak with a lawyer...", user_id: u3.id)
+j11 = Journal.create(title: "Hospital", entry: "I am worried about my health...", user_id: u3.id)
+j12 = Journal.create(title: "Police", entry: "Spoke with a detective...", user_id: u3.id)
 
 #pictures
 

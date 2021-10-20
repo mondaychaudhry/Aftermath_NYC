@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {useEffect} from 'react';
 import Entry from './Entry';
 
-function UserHome (){
+function UserHome () {
     const [form, setForm] = useState ({title: "", entry: ""})
     const [entry, setEntry] = useState ([])
 
