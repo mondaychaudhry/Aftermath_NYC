@@ -1,97 +1,87 @@
+import React, { useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
-import React, {useState} from 'react';
 
-function Signup({setCurrentUser}) {
-    const history = useHistory()
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [passwordConfirmation, setPasswordConfirmation] = useState('')
+function Signup({ setCurrentUser }) {
+  const history = useHistory()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirmation, setPasswordConfirmation] = useState('')
   
-    // const goToLogin = ()=> {
-    //     history.push('/login')
-    // }
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        fetch('/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            username,
-            password,
-            password_confirmation: passwordConfirmation
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    fetch('/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        password_confirmation: passwordConfirmation
+      })
+    })
+      .then(res => {
+        if (res.ok) {
+          res.json().then(user => {
+            setCurrentUser(user)
+            history.push('/groups')
           })
-        })
-          .then(res => {
-            if (res.ok) {
-              res.json().then(user => {
-                setCurrentUser(user)
-                history.push('/game')
-              })
-            } else {
-              history.push('/game')
-              res.json().then(errors => {
-                console.error(errors)
-              })
-            }
+        } else {
+          res.json().then(errors => {
+            console.error(errors)
           })
-      }
-
-    
-    return (
-        <div className="authForm">
-            
-            <form onSubmit={handleSubmit}>
-                <h1>Sign Up</h1>
-                <p>
-                <label 
-                    htmlFor="username"
-                >
-                    Username
-                </label>
-                <input
-                    type="text"
-                    name="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                </p>
-                <p>
-                <label 
-                    htmlFor="password"
-                >
-                    Password
-                </label>
-                <input
-                    type="password"
-                    name=""
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                </p>
-                <p>
-                <label 
-                    htmlFor="password_confirmation"
-                >
-                    Password Confirmation
-                </label>
-                <input
-                    type="password"
-                    name="password_confirmation"
-                    value={passwordConfirmation}
-                    onChange={(e) => setPasswordConfirmation(e.target.value)}
-                />
-                </p>
-                <p><button type="submit">Sign Up</button></p>
-                <p>-- Already have an account? --</p>
-                <p><Link to="/">Log In</Link></p>
-            </form>
-    
-            
-
-        </div>
-    )
+        }
+      })
+  }
+  return (
+    <div className="box">
+      <form onSubmit={handleSubmit}>
+        <h1>sign up</h1>
+        <p>
+          <label 
+            htmlFor="username"
+          >
+            username
+          </label>
+          <input
+            type="text"
+            name="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </p>
+        <p>
+          <label 
+            htmlFor="password"
+          >
+            password
+          </label>
+          <input
+            type="password"
+            name=""
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </p>
+        <p>
+          <label 
+            htmlFor="password_confirmation"
+          >
+            password confirmation
+          </label>
+          <input
+            type="password"
+            name="password_confirmation"
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+          />
+        </p>
+        <p><button type="submit">sign up</button></p>
+        <p>-- or --</p>
+        <p><Link to="/">log in</Link></p>
+      </form>
+    </div>
+  )
 }
 
-export default Signup;
+export default Signup

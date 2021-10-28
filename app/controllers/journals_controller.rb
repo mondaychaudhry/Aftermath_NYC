@@ -12,6 +12,7 @@ class JournalsController < ApplicationController
     end
 
     def create 
+        byebug
         j = User.third.journals.create(x)
         if j.valid?
             render json: j, status: :created

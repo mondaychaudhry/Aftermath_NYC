@@ -5,6 +5,8 @@ import Entry from './Entry';
 function UserHome (){
     const [form, setForm] = useState ({title: "", entry: ""})
     const [entry, setEntry] = useState ([])
+    const [photo, setPhoto] = useState (null)
+    console.log(photo)
 
     function changeForm (z) {
         let y = z.target.name
@@ -12,6 +14,11 @@ function UserHome (){
         setForm({...form, [y]:w})}
 
     useEffect (() => fetch('http://127.0.0.1:3000/journals').then(x => x.json()).then(setEntry), [])
+    // useEffect (() => fetch('http://127.0.0.1:3000/photos').then(x => x.json()).then((p) => {
+    //     // let q = URL.createObjectURL(p)
+    //     setPhoto(q)
+    // }), [])
+    
 
     function displayEntries () {
         return entry.map((x, index) => <Entry key={index} x={x} setEntry={setEntry} entry={entry}/>)}
@@ -30,15 +37,29 @@ function UserHome (){
                 "Content-Type": "application/json",
             }}).then(x => x.json()).then(y => {
             addEntries(y)
-            setForm({title: "", entry: ""})})}
+            setForm({title: "", entry: "", img: photo})})}
+
+        function fileChangedHandler (event) {
+            // console.log('WORKZZZ')
+            // setPhoto(event.target.files[0])
+            if (event.target.files && event.target.files[0]) {
+                console.log(event.target.files[0])
+                console.log(URL.createObjectURL(event.target.files[0]))
+            setPhoto(URL.createObjectURL(event.target.files[0]));
+                }
+              }
+
+        function uploadHandler () {
+
+        }
 
     return (
         
         <div >
-            <h2>User Home</h2>
+            <h2>entries</h2>
 
-            <h4>Written Feelings & Facts</h4>
-            <form id='form' onSubmit={handleSubmit} >
+        
+            <form id='form' className='tile' onSubmit={handleSubmit} >
                 <input
                 type='text'
                 name='title'
@@ -57,6 +78,15 @@ function UserHome (){
                 placeholder='Write anything you want here. Thoughts, feelings, details, anything on your mind.'
                 />
                 <br></br>
+
+                <input 
+                type='file'
+                onChange={fileChangedHandler} 
+                />
+                 <img src={photo} alt="preview image" />
+                <br></br>
+                 {/* <input type="file" onChange={fileChangedHandler} /> */}
+                {/* <button onClick={uploadHandler}>Upload!</button>  */}
 
                 <input 
                 type='submit'
